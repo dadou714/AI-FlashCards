@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Image from "next/image";
 import getStripe from "@/utils/get-stripe";
-import { SignedIn, SignedOut, UserButton  } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
   AppBar,
   Button,
@@ -15,6 +15,25 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
+  const handleSubmit = async () => {
+    const checkoutSession = await fetch("/api/checkout_session", {
+
+    });
+    const checkoutSessionJson = await checkoutSession.json();
+    if(checkoutSession.statusCode === 500){
+      console.error(checkoutSession.message);
+      return;
+    }
+
+    const stripe = await getStripe();
+    const {error} = await stripe.redirectToCheckout({
+      sessionId: checkoutSessionJson.id,
+    })
+    if(error){
+      console.warn(error.message)
+    }
+  };
+
   return (
     <Container maxWidth="100vw">
       <title>Flashcard Saas</title>
@@ -49,7 +68,7 @@ export default function Home() {
           variant="contained"
           color="primary"
           sx={{ mt: 2 }}
-          onClick={() => router.push('/generate')}
+          onClick={() => router.push("/generate")}
         >
           Get Started
         </Button>
@@ -125,13 +144,13 @@ export default function Home() {
               }}
             >
               <Typography variant="h5">Basic</Typography>
-              <Typography variant="h6">$5 / month</Typography>
+              <Typography variant="h6">$10 / month</Typography>
               <Typography>
                 {" "}
                 Unlimited flashcards and storage with priority support
               </Typography>
-              <Button variant="contained" color="primary">
-                Choose Basic
+              <Button variant="contained" color="primary" onClick={handleSubmit}>
+                Choose Pro
               </Button>
             </Box>
           </Grid>
