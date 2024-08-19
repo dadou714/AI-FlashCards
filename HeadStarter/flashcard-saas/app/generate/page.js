@@ -60,6 +60,7 @@ export default function Generate() {
 
       const data = await response.json();
       setFlashcards(data);
+  
     } catch (error) {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
