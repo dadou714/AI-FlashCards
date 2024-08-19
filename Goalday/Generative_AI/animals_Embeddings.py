@@ -2,8 +2,6 @@ import openai
 import numpy as np
 
 # Set up your OpenAI API key
-openai.api_key = "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"
-
 # Define the list of animals to classify
 animals = [
     "Elephant", "Lion", "Tiger", "Giraffe", "Zebra", "Kangaroo", "Panda", "Gorilla", 
