@@ -17,20 +17,25 @@ export default function Home() {
   const router = useRouter();
   const handleSubmit = async () => {
     const checkoutSession = await fetch("/api/checkout_session", {
-
+      method: "POST",
+      headers: {
+        origin: "http://localhost:3000",
+      },
     });
     const checkoutSessionJson = await checkoutSession.json();
-    if(checkoutSession.statusCode === 500){
+    if (checkoutSession.statusCode === 500) {
       console.error(checkoutSession.message);
       return;
     }
 
     const stripe = await getStripe();
-    const {error} = await stripe.redirectToCheckout({
+    console.log(`ID: ${checkoutSessionJson.id}`);
+    const { error } = await stripe.redirectToCheckout({
       sessionId: checkoutSessionJson.id,
-    })
-    if(error){
-      console.warn(error.message)
+    });
+
+    if (error) {
+      console.warn(error.message);
     }
   };
 
@@ -96,7 +101,7 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h5">Accessible</Typography>
+            <Typography variant="h5" gutterBottom>Accessible</Typography>
             <Typography>
               {" "}
               Simply input your text and let our software do the rest. Creating
@@ -121,7 +126,7 @@ export default function Home() {
               }}
             >
               <Typography variant="h5">Basic</Typography>
-              <Typography variant="h6">$5 / month</Typography>
+              <Typography variant="h6" gutterBottom>$5 / month</Typography>
               <Typography>
                 {" "}
                 Access to basic flashcard features and limited storage
@@ -144,12 +149,16 @@ export default function Home() {
               }}
             >
               <Typography variant="h5">Basic</Typography>
-              <Typography variant="h6">$10 / month</Typography>
+              <Typography variant="h6" gutterBottom>$10 / month</Typography>
               <Typography>
                 {" "}
                 Unlimited flashcards and storage with priority support
               </Typography>
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+              >
                 Choose Pro
               </Button>
             </Box>
