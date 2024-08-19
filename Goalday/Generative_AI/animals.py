@@ -1,9 +1,7 @@
 import os
 import openai
 
-# Set up your OpenAI API key
-os.environ["OPENAI_API_KEY"] = "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"
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 response = openai.ChatCompletion.create(
     model="gpt-4o",
