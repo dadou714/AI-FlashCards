@@ -1,6 +1,6 @@
 
 import { Container, AppBar, Typography, Button, Box, Toolbar } from '@mui/material';
-import { SignIn } from '@clerk/nextjs'
+import { SignUp } from '@clerk/nextjs'
 import Link from 'next/link';
 
 export default function SignUpPage() {
@@ -21,7 +21,7 @@ export default function SignUpPage() {
           </Button>
           <Button color="inherit">
             <Link href="/sign-up" passHref>
-              Sign up
+              Sign Up
             </Link>
           </Button>
         </Toolbar>
@@ -37,9 +37,9 @@ export default function SignUpPage() {
           sx={{ textAlign: 'center', my: 4 }}
         >
           <Typography variant="h4" component="h1">
-            Sign In
+            Sign Up
           </Typography>
-          <SignIn />
+          <SignUp />
         </Box>
     </Container>
   )
