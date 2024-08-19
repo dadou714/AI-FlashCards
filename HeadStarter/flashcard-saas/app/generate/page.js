@@ -23,7 +23,7 @@ export default function Generate() {
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
 
-  const [setName, setSetName] = useState("");
+  const [name, setSetName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleOpenDialog = () => setDialogOpen(true);
@@ -60,7 +60,7 @@ export default function Generate() {
     }
   };
   const saveFlashcards = async () => {
-    if (!setName.trim()) {
+    if (!name.trim()) {
       alert("Please enter a name for your flashcard set.");
       return;
     }
@@ -75,14 +75,14 @@ export default function Generate() {
         const userData = userDocSnap.data();
         const updatedSets = [
           ...(userData.flashcardSets || []),
-          { name: setName },
+          { name: name },
         ];
         batch.update(userDocRef, { flashcardSets: updatedSets });
       } else {
-        batch.set(userDocRef, { flashcardSets: [{ name: setName }] });
+        batch.set(userDocRef, { flashcardSets: [{ name: name }] });
       }
 
-      const setDocRef = doc(collection(userDocRef, "flashcardSets"), setName);
+      const setDocRef = doc(collection(userDocRef, "flashcardSets"), name);
       batch.set(setDocRef, { flashcards });
 
       await batch.commit();
@@ -202,7 +202,7 @@ export default function Generate() {
                   label="Set Name"
                   type="text"
                   fullWidth
-                  value={setName}
+                  value={name}
                   onChange={(e) => setSetName(e.target.value)}
                 />
               </DialogContent>
