@@ -14,8 +14,6 @@ import {
   collection,
   doc,
   getDoc,
-  writeBatch,
-  CollectionReference,
   setDoc,
 } from "firebase/firestore";
 import { db } from "@/firebase";
@@ -29,7 +27,6 @@ export default function Flashcard() {
   const handleCardClick = (id) => {
     router.push(`/flashcard?id=${id}`);
   };
-  // ... (rest of the component)
   useEffect(() => {
     async function getFlashcards() {
       if (!user) return;

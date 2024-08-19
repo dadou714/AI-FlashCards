@@ -23,7 +23,7 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 export default function Generate() {
-  const { isLoaded, user, isSignedIn } = useUser();
+  const { user } = useUser();
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
@@ -60,7 +60,6 @@ export default function Generate() {
 
       const data = await response.json();
       setFlashcards(data);
-  
     } catch (error) {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
@@ -192,19 +191,6 @@ export default function Generate() {
                     </CardActionArea>
                   </Card>
                 </Grid>
-
-                // <Grid item xs={12} sm={6} md={4} key={index}>
-                //   <Card>
-                //     <CardContent>
-                //       <Typography variant="h6">Front:</Typography>
-                //       <Typography>{flashcard.front}</Typography>
-                //       <Typography variant="h6" sx={{ mt: 2 }}>
-                //         Back:
-                //       </Typography>
-                //       <Typography>{flashcard.back}</Typography>
-                //     </CardContent>
-                //   </Card>
-                // </Grid>
               ))}
             </Grid>
             {flashcards.length > 0 && (

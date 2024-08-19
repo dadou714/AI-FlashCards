@@ -10,7 +10,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 export async function POST(req) {
   try {
-    // We'll implement the checkout session creation here
     const params = {
         mode: 'subscription',
         payment_method_types: ['card'],

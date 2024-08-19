@@ -101,7 +101,9 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h5" gutterBottom>Accessible</Typography>
+            <Typography variant="h5" gutterBottom>
+              Accessible
+            </Typography>
             <Typography>
               {" "}
               Simply input your text and let our software do the rest. Creating
@@ -126,12 +128,14 @@ export default function Home() {
               }}
             >
               <Typography variant="h5">Basic</Typography>
-              <Typography variant="h6" gutterBottom>$5 / month</Typography>
+              <Typography variant="h6" gutterBottom>
+                $5 / month
+              </Typography>
               <Typography>
                 {" "}
                 Access to basic flashcard features and limited storage
               </Typography>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={handleSubmit}>
                 Choose Basic
               </Button>
             </Box>
@@ -149,7 +153,9 @@ export default function Home() {
               }}
             >
               <Typography variant="h5">Basic</Typography>
-              <Typography variant="h6" gutterBottom>$10 / month</Typography>
+              <Typography variant="h6" gutterBottom>
+                $10 / month
+              </Typography>
               <Typography>
                 {" "}
                 Unlimited flashcards and storage with priority support

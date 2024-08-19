@@ -16,8 +16,6 @@ const ResultPage = () => {
   const [session, setSession] = useState(null);
   const [error, setError] = useState(null);
 
-  // ... (rest of the component)
-
   useEffect(() => {
     const fetchCheckoutSession = async () => {
       if (!session_id) return;
