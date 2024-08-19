@@ -17,8 +17,12 @@ import {
   CardContent,
   CardActionArea,
 } from "@mui/material";
+import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
+import { db } from "@/firebase";
+import { useUser } from "@clerk/nextjs";
 
 export default function Generate() {
+  const { isLoaded, user, isSignedIn } = useUser();
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
@@ -73,10 +77,7 @@ export default function Generate() {
 
       if (userDocSnap.exists()) {
         const userData = userDocSnap.data();
-        const updatedSets = [
-          ...(userData.flashcardSets || []),
-          { name: name },
-        ];
+        const updatedSets = [...(userData.flashcardSets || []), { name: name }];
         batch.update(userDocRef, { flashcardSets: updatedSets });
       } else {
         batch.set(userDocRef, { flashcardSets: [{ name: name }] });
