@@ -74,20 +74,29 @@ export default function Generate() {
     try {
       const userDocRef = doc(collection(db, "users"), user.id);
       const userDocSnap = await getDoc(userDocRef);
-
       const batch = writeBatch(db);
 
       if (userDocSnap.exists()) {
-        const userData = userDocSnap.data();
-        const updatedSets = [...(userData.flashcardSets || []), { name: name }];
-        batch.update(userDocRef, { flashcardSets: updatedSets });
+        const collections = userDocSnap.data().flashcards || [];
+        if (collections.find((f) => f.name == name)) {
+          alert("Flashcard with the same name already exists!");
+          return;
+        } else {
+          collections.push({ name });
+          batch.set(userDocRef, { flashcards: collections }, { merge: true });
+        }
+        // const userData = userDocSnap.data();
+        // const updatedSets = [...(userData.flashcardSets || []), { name: name }];
+        // batch.update(userDocRef, { flashcardSets: updatedSets });
       } else {
-        batch.set(userDocRef, { flashcardSets: [{ name: name }] });
+        batch.set(userDocRef, { flashcards: [{ name }] });
       }
 
-      const setDocRef = doc(collection(userDocRef, "flashcardSets"), name);
-      batch.set(setDocRef, { flashcards });
-
+      const docRef = collection(userDocRef, name);
+      flashcards.forEach((flashcard) => {
+        const cardDocRef = doc(docRef);
+        batch.set(cardDocRef, flashcard);
+      });
       await batch.commit();
 
       alert("Flashcards saved successfully!");
