@@ -85,9 +85,6 @@ export default function Generate() {
           collections.push({ name });
           batch.set(userDocRef, { flashcards: collections }, { merge: true });
         }
-        // const userData = userDocSnap.data();
-        // const updatedSets = [...(userData.flashcardSets || []), { name: name }];
-        // batch.update(userDocRef, { flashcardSets: updatedSets });
       } else {
         batch.set(userDocRef, { flashcards: [{ name }] });
       }
