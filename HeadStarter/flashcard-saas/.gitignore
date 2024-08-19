@@ -1,0 +1,94 @@
+# Node.js dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Local environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Package distribution
+*.tgz
+*.zip
+*.tar.gz
+
+# Build directories
+dist/
+build/
+
+
+../../.CFUserTextEncoding
+../../.DS_Store
+../../.cache/
+../../.codeium/
+../../.config/
+../../.gitconfig
+../../.idlerc/
+../../.ipython/
+../../.lesshst
+../../.m2/
+../../.mysql_history
+../../.npm/
+../../.python_history
+../../.ssh/
+../../.viminfo
+../../.vscode/
+../../.zprofile
+../../.zprofile.pysave
+../../.zsh_history
+../../.zsh_sessions/
+../../.zshrc
+../../Applications/
+../../Classes/
+../../Desktop/
+../../Documents/
+../../Downloads/
+../../Goalday/.DS_Store
+../../Goalday/Generative_AI/.DS_Store
+../../Goalday/Generative_AI/secretKey.json
+../../Goalday/TakeALot_DB.sql
+../../Goalday/TakeALot_Detailed/
+../../Goalday/ecomm/
+../../Goalday/node_modules/
+../../Goalday/package-lock.json
+../../Goalday/package.json
+../../Goalday/playwright-project/
+../../Goalday/playwright_env/
+../CustomeAI_Support/
+../Inventory/
+../flashcard2/
+../html5up-landed/
+../../Lavner/
+../../Library/
+../../Movies/
+../../Music/
+../../Pictures/
+../../Public/
+../../TakeALot_DB.sql
+../../p6-route/
