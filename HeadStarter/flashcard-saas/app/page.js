@@ -63,7 +63,7 @@ export default function Home() {
       </AppBar>
 
       <Box sx={{ my: 6, textAlign: "center" }}>
-        <Typography variant="h2"> Welcome to Flashcard Saas</Typography>
+        <Typography variant="h3"> Flashcards Made Easy</Typography>
         <Typography variant="h5">
           {" "}
           The easiest way to create flashcards from your text
