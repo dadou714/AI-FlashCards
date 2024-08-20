@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <Container maxWidth="100vw">
+    <Container maxWidth="190vw">
       <title>Flashcard Saas</title>
       <meta name="description" content="Create flashcards from your text" />
 
@@ -84,7 +84,7 @@ export default function Home() {
 
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h5">Easy Text Input</Typography>
+            <Typography variant="h5">Quick</Typography>
             <Typography>
               {" "}
               Simply input your text and let our software do the rest. Creating
@@ -93,11 +93,11 @@ export default function Home() {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h5">Easy Text Input</Typography>
+            <Typography variant="h5">Accurate</Typography>
             <Typography>
               {" "}
-              Our AI intelligently breaks down your text into concise
-              flashcards. perfect for studying.
+              Our model understands your input and curate
+              a set of relevant questions and correct answers for your flashcards
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -106,14 +106,13 @@ export default function Home() {
             </Typography>
             <Typography>
               {" "}
-              Simply input your text and let our software do the rest. Creating
-              flashcards has never been easier.
+              Designed to support all devices and screen sizes. Offered with a favorable price.
             </Typography>
           </Grid>
         </Grid>
       </Box>
 
-      <Box sx={{ my: 6, textAlign: "center" }} pudderButtom>
+      <Box sx={{ my: 6, textAlign: "center" }} >
         <Typography variant="h2">Pricing</Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
